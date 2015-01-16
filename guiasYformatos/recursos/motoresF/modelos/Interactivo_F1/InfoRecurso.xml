@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- v : 10.10.8 -->
+<metadata xmlns="urn:InfoRecurso">
+  <identificador>RES-20F306BC94FC4939A7080C7DEFAE9GG7</identificador>
+  <loid>CI_S3_05_MX_Recurso940</loid>
+  <titulo>Presentacion de diapositivas</titulo>
+  <descripcion>Presentación de diapositivas de ejemplo</descripcion>
+  <relacionado>0</relacionado>
+  <tiporecurso>Recurso con ficha</tiporecurso>
+  <tiempoestimado>10</tiempoestimado>
+  <acciondidactica>Exposición</acciondidactica>
+  <competencia>Competencia en el conocimiento y la interacción con el mundo físico</competencia>
+  <competencias>
+    <descriptor>3_1_1</descriptor>
+    <descriptor>3_1_2</descriptor>
+    <descriptor>3_1_3</descriptor>
+    <descriptor>3_1_4</descriptor>
+  </competencias>
+  <tipomedia pesado="false" matricula="">Secuencia de imágenes</tipomedia>
+  <conceptos />
+</metadata>

@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx">
+
+    <fx:Metadata>
+        [Event(name="change", type="flash.events.Event")]
+    </fx:Metadata>
+
+    <s:layout>
+        <s:VerticalLayout verticalAlign="middle" horizontalAlign="center"/>
+    </s:layout>
+
+
+    <s:Group>
+        <mx:Image id="croppedImage" width="100" height="100"/>
+        <s:Rect x="0" y="0"
+                width="{croppedImage.width}"
+                height="{croppedImage.height}"
+                visible="{!croppedImage.source}">
+            <s:stroke>
+                <s:SolidColorStroke color="#000000" alpha="0.5" weight="1"/>
+            </s:stroke>
+            <s:fill>
+                <s:BitmapFill
+                        source="@Embed('assets/stripeGray.png')"
+                        fillMode="repeat"/>
+            </s:fill>
+        </s:Rect>
+    </s:Group>
+
+    <s:CheckBox id="showBorder" label="con borde"/>
+    <s:Button label="Carga imagen" click="loadImage()"/>
+
+    <fx:Script><![CDATA[
+        import editor.Zip;
+
+        import module.image.assets.Image2Popup;
+
+        import mx.controls.Alert;
+
+        import mx.core.FlexGlobals;
+        import mx.graphics.codec.JPEGEncoder;
+        import mx.graphics.codec.PNGEncoder;
+        import mx.managers.PopUpManager;
+
+        private var _uniqueName:String = "";
+        [Bindable]
+        public var imgh:Number;
+        [Bindable]
+        public var imgw:Number;
+
+        public var fullSizeData:ByteArray;
+        public var addFullSizeImage:Boolean = false;
+
+        private function loadImage():void
+        {
+            var popup:Image2Popup = new Image2Popup();
+            popup.externalImage = croppedImage;
+            popup.fullSizeData = fullSizeData;
+            popup.uniqueName = uniqueName;
+            popup.addFullSizeImage = addFullSizeImage;
+            popup.imgw = imgw;
+            popup.imgh = imgh;
+            PopUpManager.addPopUp(popup, FlexGlobals.topLevelApplication as DisplayObject, true);
+            PopUpManager.centerPopUp(popup);
+        }
+
+        public function get data():ByteArray
+        {
+            return croppedImage.source as ByteArray;
+        }
+
+        public function getPath(addFullSizeImage:Boolean = false):String
+        {
+            trace("get path", croppedImage.source is ByteArray, _uniqueName);
+            if (croppedImage.source != null)
+            {
+
+                if (croppedImage.source is ByteArray)
+                {
+                    var ba:ByteArray = new ByteArray();
+                    ba.writeBytes(croppedImage.source as ByteArray);
+                    ba.position = 0;
+                    Zip.getInstance().imagesForSave[uniqueName] = ba;
+                    return _uniqueName;
+                }
+                else if (croppedImage.source is Bitmap)
+                {
+                    var encoder:JPEGEncoder = new JPEGEncoder(90);
+                    var _ba:ByteArray = encoder.encode(Bitmap(croppedImage.source).bitmapData);
+                    var ba:ByteArray = new ByteArray();
+                    ba.writeBytes(_ba as ByteArray);
+                    ba.position = 0;
+                    Zip.getInstance().imagesForSave[uniqueName] = ba;
+                    
+                    return _uniqueName;
+                }
+                else if (croppedImage.source is String && String(croppedImage.source) != "")
+                {
+                    //return Zip.getInstance().addImageForSaveFromLastTime();
+                }
+
+            }
+            return "";
+        }
+
+        public function setSource(path:String):void
+        {
+            trace("set source", path);
+            if (path == "") croppedImage.source = null;
+            else
+            {
+                var images:Dictionary = Zip.getInstance().imagesForSave;
+                if (images[uniqueName])
+                {
+                    var ba:ByteArray = images[uniqueName];
+                    ba.position = 0;
+                    croppedImage.source = ba;
+                    //fullSizeData = images[uniqueName + "_big.jpg"];
+                }
+                else
+                {
+                    croppedImage.source = null;
+                }
+            }
+
+        }
+
+        public function get uniqueName():String
+        {
+            return _uniqueName;
+        }
+
+        public function set uniqueName(value:String):void
+        {
+            _uniqueName = "medias/" + value + ".jpg";
+        }
+        ]]></fx:Script>
+</s:Group>

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<s:Panel title="Vista prèvia" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx">
+    <s:VGroup paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10">
+        <mx:Image id="image" width="950" height="610" scaleContent="false"/>
+        <s:Button id="closebutton" click="close()" label="Cancelar"/>
+    </s:VGroup>
+    <fx:Script><![CDATA[
+        import mx.events.FlexEvent;
+        import mx.managers.PopUpManager;
+
+        public var prev:Class;
+
+        private var _xml;
+        private var loader:Loader;
+
+        public function init(_xml:String):void
+        {
+            if(image.source)
+            {
+                pp.xml = new XML(_xml);
+                pp.parseXML();
+                return;
+            }
+            this._xml = _xml;
+            var a = Zip.getInstance().basicFiles["swf/player.swf"];
+            loader = new Loader();
+            loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoaded);
+
+            var c:LoaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
+            loader.loadBytes(a);
+        }
+
+        private static var pp;
+
+        private function onScroll(event:*):void
+        {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+
+        private function onLoaded(event:Event):void
+        {
+            //var cl = getDefinitionByName("player.Player");
+
+
+            var cl = loader.contentLoaderInfo.applicationDomain.getDefinition("Player");
+            pp = new cl();
+            pp.preview();
+            pp.xml = new XML(_xml);
+            pp.addEventListener("show", onScroll);
+            pp.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+            image.source = pp;
+
+            setTimeout(cd, 150);
+        }
+
+        private function onAddedToStage(event:Event):void
+        {
+           // pp.init(_xml, true);
+        }
+
+        private function cd():void
+        {
+            //pp.flex();
+            ///pp.s.drawNow();
+        }
+
+        private function close():void
+        {
+            visible = false;
+            //pp = null;
+            //image.unloadAndStop();
+            //PopUpManager.removePopUp(this);
+        }
+        ]]></fx:Script>
+</s:Panel>

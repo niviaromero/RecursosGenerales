@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:imagecropper="com.flexblocks.imagecropper.*" xmlns:mx="library://ns.adobe.com/flex/mx"
+         x="5" y="11" width="854" height="434"
+         title="Encuadrador" creationComplete="creationCompleteHandler(event)">
+
+    <s:Button x="770" y="370" label="Cancelar" id="cancelar" click="closePopup()"/>
+    <s:Button x="692" y="370" label="Guardar" id="guardar" click="save()"/>
+    <s:Button id="seleccionar" x="10" y="370" label="Seleccionar Imagen" click="selectImage()"/>
+
+    <s:Label y="340" x="10" text="Arrastra el cursor para crear un cuadro de selección personalizado"
+             fontStyle="italic"/>
+
+    <s:HGroup top="10" left="10" gap="10">
+        <imagecropper:ImageCropper id="imageCropper" width="400" height="300" enabled="true" handleColor="#FF00FF"
+                                   maskColor="#660066" maskAlpha="0.6"
+                                   cropRectChanged="doCrop()" sourceImageReady="setRect(); doCrop()"
+                />
+
+        <s:Group width="400" height="300">
+            <s:Rect x="0" y="0"
+                    width="{croppedImage.width}"
+                    height="{croppedImage.height}"
+                    visible="{!croppedImage.source}">
+                <s:stroke>
+                    <s:SolidColorStroke color="#000000" alpha="0.5" weight="1"/>
+                </s:stroke>
+                <s:fill>
+                    <s:BitmapFill
+                            source="@Embed('/module/image/assets/stripeGray.png')"
+                            fillMode="repeat"/>
+                </s:fill>
+            </s:Rect>
+
+            <s:Scroller width="400" height="300">
+                <s:Group>
+                    <mx:Image id="croppedImage" scaleContent="false"/>
+                </s:Group>
+            </s:Scroller>
+        </s:Group>
+
+    </s:HGroup>
+
+    <fx:Script><![CDATA[
+        import editor.Zip;
+
+        import mx.controls.Alert;
+        import mx.events.FlexEvent;
+        import mx.managers.PopUpManager;
+
+        private var fileRef:FileReference = new FileReference();
+        public var externalImage:Image;
+        public var uniqueName:String;
+        public var imgw:Number = -1;
+        public var imgh:Number = -1;
+        public static var saveData:Dictionary = new Dictionary();
+        public var fullSizeData:ByteArray;
+        public var addFullSizeImage:Boolean = false;
+
+        private function selectImage():void
+        {
+            fileRef.addEventListener(Event.SELECT, onFileSelect);
+            fileRef.browse([new FileFilter("Imagenes *.jpg,*.jpeg,*.png,*.gif", "*.jpg;*.jpeg;*.png;*.gif")]);
+        }
+
+        private function onFileSelect(event:Event):void
+        {
+            fileRef.addEventListener(Event.COMPLETE, onComplate);
+            fileRef.load();
+        }
+
+        private function onComplate(event:Event):void
+        {
+            var ba:ByteArray = new ByteArray();
+            ba.writeBytes(ByteArray(fileRef.data));
+            ba.position = 0;
+            //fullSizeData = ba;
+
+             if (addFullSizeImage)
+            {
+                //Alert.show(String(addFullSizeImage) + String(ba))
+                var bigName:String = uniqueName + "_big.jpg";
+                bigName = bigName.replace(".jpg_big.jpg", "_big.jpg");
+                Zip.getInstance().imagesForSave[bigName] = ba;
+
+            }
+
+            addImage(fileRef.data);
+        }
+
+        private function addImage(data:ByteArray):void
+        {
+            if (imgw > -1 && imgh > -1)
+            {
+                var ratio:Number = imgw / imgh;
+                imageCropper.setCropRect(0, 0, 100, 100);
+            }
+            else
+            {
+                imageCropper.setCropRect();
+            }
+            imageCropper.sourceImage = data;
+            doAspectRatio();
+        }
+
+        private function doCrop():void
+        {
+            var newImageBD:BitmapData = imageCropper.croppedBitmapData;
+            croppedImage.width = newImageBD.width;
+            croppedImage.height = newImageBD.height;
+            croppedImage.source = new Bitmap(newImageBD);
+        }
+
+        private function creationCompleteHandler(event:FlexEvent):void
+        {
+            if (saveData[uniqueName] == null)
+            {
+                selectImage();
+            }
+            else
+            {
+                var rect:Rectangle = saveData[uniqueName].rect;
+                imageCropper.setCropRect(rect.width, rect.height, rect.x, rect.y, true);
+                imageCropper.sourceImage = saveData[uniqueName].image;
+            }
+
+            doAspectRatio();
+        }
+
+        private function closePopup():void
+        {
+            PopUpManager.removePopUp(this);
+            externalImage.dispatchEvent(new Event(Event.CHANGE, true));
+        }
+
+        private function save():void
+        {
+            externalImage.source = croppedImage.source;
+            closePopup();
+
+            saveData[uniqueName] = {rect: imageCropper.getCropRect(true), image: imageCropper.sourceImage};
+        }
+
+        private function doAspectRatio():void
+        {
+            if (true || imgh > -1 && imgh > -1)
+            {
+                imageCropper.constrainToAspectRatio = true;
+            }
+        }
+
+        private function setRect():void
+        {
+            if (saveData[uniqueName] == null)
+            {
+                imageCropper.constrainToAspectRatio = true;
+                var ratio = imgh / imgw;
+                imageCropper.cropRatio = ratio;
+                imageCropper.setCropRect(50, 50 * ratio, 0, 0, true);
+            } else
+            {
+
+            }
+            //doAspectRatio();
+        }
+        ]]></fx:Script>
+</s:Panel>

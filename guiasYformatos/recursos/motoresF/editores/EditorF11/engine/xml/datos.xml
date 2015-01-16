@@ -1,0 +1,103 @@
+<engine copy="Editorial Planeta" version="1">
+  <main mode="f11" title="">
+    <tf/>
+    <audio path=""/>
+    <audio2 path=""/>
+    <video/>
+  </main>
+  <understanding visible="false" title="" title2="" buttons="false" investiga="false">
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+  </understanding>
+  <reaserch visible="false" title="" title2="" buttons="false" investiga="false">
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+  </reaserch>
+  <definitions visible="false" title="" title2="">
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+  </definitions>
+  <activity title2="" visible="false"/>
+</engine>

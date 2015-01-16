@@ -1,0 +1,11 @@
+<engine path="" mode="2" copy="Editorial Planeta" version="1">
+  <main layout="0" pointsVisible="false" replayText="" noreplayText="">
+    <title/>
+    <correct/>
+    <wrong/>
+    <final/>
+    <blockTitle/>
+    <pointsText/>
+  </main>
+  <sections/>
+</engine>

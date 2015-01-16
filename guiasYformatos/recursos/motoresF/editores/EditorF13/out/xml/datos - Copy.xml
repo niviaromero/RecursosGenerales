@@ -1,0 +1,15 @@
+<!--F13-->
+<engine title="Tytul glowny">
+	<section path="medias/big_1.png" layout="0" title="t1">
+	¡tekst 1fdsdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+	</section>
+	<section path="medias/big_2.png" layout="1" title="t2">
+	¡tekst 1fdsdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+	</section>
+	<section path="medias/big_3.png" layout="2" title="t3">
+	¡tekst 1fdsdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+	</section>
+	<section path="medias/big_1.png" layout="0" title="t4">
+	¡tekst 1fdsdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf dfdfdfdfdfdf¡dfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdfdf
+	</section>
+</engine>

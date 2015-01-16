@@ -1,0 +1,69 @@
+<html>
+    <script type='text/javascript' src='jquery-1.4.4.min.js'></script>
+    <title>Editor de mapas conceptuales</title>
+        
+    <script>
+    
+    var nomFitxer;
+    
+    function edit() {                
+		var fitxer= $("#fitxer").val();				
+		if ((fitxer!=null) && (fitxer!=undefined) && (fitxer!="")) {
+			nomFitxer = "mode=0&amp;file=" + fitxer;
+		} 
+		else {
+			nomFitxer = "mode=0";
+		}
+        gotoIFrame();
+    }
+    
+    function view() {
+        var fitxer= $("#fitxer").val();		
+		if ((fitxer!=null) && (fitxer!=undefined) && (fitxer!="")) {
+			nomFitxer = "mode=1&amp;file=" + $("#fitxer").val();
+		} 
+		else 
+		{
+			nomFitxer = "mode=1";
+		}
+        gotoIFrame();
+    }
+        
+    function gotoIFrame() {
+        $("#myFrame").attr('src','mapa_mc.html')        
+    }
+    
+    </script>
+    
+    
+    <body>    
+	<table width='100%'>
+		<tr>
+			<td>
+				<H1>Editor de mapas conceptuales - v.1.0</H1>
+			</td>
+			<td>
+				<img align='right' src="logoCEPDA.PNG">				
+			</td>
+		</tr>
+		<tr>
+			<td> <B>Atención :</b> Herramienta para Internet Explorer 7.0 o superior</td>
+			<td align="center"><a href="Ayuda.htm" target="_blank">Ayuda</a></td>
+		</tr>		
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td coslpan="2">
+			Selecciona un fichero XML de datos ...
+			<BR>
+			<input type="file" id="fitxer" size="82"/>
+			&nbsp;<input type="button" id="edit" value="Editar" onclick="edit()" />
+			&nbsp;<input type="button" id="view" value="Ver" onclick="view()" />
+			</td>
+		</tr>
+	</table>
+    
+    <iframe id='myFrame' width='100%' height='100%' scrolling='no' frameborder='0' allowTransparency='true'></iframe>    
+    </body>
+</html>

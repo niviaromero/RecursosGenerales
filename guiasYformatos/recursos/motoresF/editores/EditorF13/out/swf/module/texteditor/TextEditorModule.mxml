@@ -1,0 +1,745 @@
+<?xml version="1.0"?>
+<s:SkinnableComponent xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+                      skinClass="module.texteditor.skins.TextEditorSkin">
+    <fx:Metadata>
+        [Event(name="change", type="flash.events.Event")]
+    </fx:Metadata>
+    <fx:Script><![CDATA[
+        import editor.Zip;
+
+        import flash.text.engine.FontPosture;
+        import flash.text.engine.FontWeight;
+        import flash.text.engine.TextLine;
+
+        import flashx.textLayout.compose.TextFlowLine;
+        import flashx.textLayout.conversion.ConversionType;
+        import flashx.textLayout.conversion.TextConverter;
+        import flashx.textLayout.edit.ISelectionManager;
+        import flashx.textLayout.elements.FlowElement;
+        import flashx.textLayout.elements.InlineGraphicElement;
+        import flashx.textLayout.elements.ParagraphElement;
+        import flashx.textLayout.elements.TextFlow;
+        import flashx.textLayout.events.CompositionCompleteEvent;
+        import flashx.textLayout.events.SelectionEvent;
+        import flashx.textLayout.formats.TextDecoration;
+        import flashx.textLayout.formats.TextLayoutFormat;
+        import flashx.textLayout.tlf_internal;
+
+        import module.texteditor.helper.SWFHelper;
+        import module.texteditor.popup.URLPopup;
+        import module.texteditor.vo.SectionStyleVO;
+
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.controls.ColorPicker;
+        import mx.events.FlexEvent;
+        import mx.managers.PopUpManager;
+
+        import spark.components.Button;
+        import spark.components.DropDownList;
+        import spark.components.List;
+        import spark.components.RichEditableText;
+        import spark.components.ToggleButton;
+        import spark.events.TextOperationEvent;
+
+        private const FONT_STEP:int = 2;
+        private const MINIMUM_SIZE:int = 6;
+        private const MAXIMUM_SIZE:int = 100;
+
+        private static const SYMBOLS:String = "æᴂӕıʊəɜɔʌɑɒθʧʃðʤŋαβγδεζηθικλμνξοπρσςτυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ∀∂∃∅∇∈∉∋∏∑−∗√∞∠∧∨∩∪∫≅≈≠≡≤≥⊂⊃⊅⊆⊇∴";
+
+        /**
+         * Components
+         */
+        [SkinPart(required="true")]
+        public var richEditableText:RichEditableText;
+
+        [SkinPart(required="false")]
+        public var boldButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var italicButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var underlineButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var biggerFontButton:Button;
+
+        [SkinPart(required="false")]
+        public var smallerFontButton:Button;
+
+        [SkinPart(required="false")]
+        public var sectionStylesDropDownList:DropDownList;
+
+        [SkinPart(required="false")]
+        public var colorPicker:ColorPicker;
+
+        [SkinPart(required="false")]
+        public var urlButton:Button;
+
+        [SkinPart(required="false")]
+        public var swfButton:Button;
+
+        [SkinPart(required="false")]
+        public var upButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var bottomButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var symbolButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var listButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var symbolList:List;
+
+        [SkinPart(required="false")]
+        public var alignLeftButton:ToggleButton;
+
+        [SkinPart(required="false")]
+        public var alignCenterButton:ToggleButton;
+        /**
+         * Components Visibility
+         */
+
+        [Bindable]
+        public var boldButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var italicButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var underlineButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var biggerFontButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var smallerFontButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var indexButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var urlButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var swfButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var colorPickerVisible:Boolean = true;
+
+        [Bindable]
+        public var symbolButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var sectionStylesDropDownVisible:Boolean = true;
+
+        [Bindable]
+        public var listButtonVisible:Boolean = true;
+
+        [Bindable]
+        public var alignIconsVisible:Boolean = false;
+
+        [Bindable]
+        public var singleLine:Boolean = false;
+
+        /**
+         Characters limit; 0 == no limit.
+         */
+        [Bindable]
+        public var maxChars:int = 0;
+
+        /**
+         * Data provider for predefined styles
+         */
+        [Bindable]
+        [ArrayElementType("module.texteditor.vo.SectionStyleVO")]
+        private var _sectionStyles:ArrayCollection = new ArrayCollection([
+            new SectionStyleVO("Title Big", 20, "Arial", true, true, true),
+            new SectionStyleVO("Title Small", 14, "Arial")
+        ]);
+
+
+        override protected function partAdded(partName:String, instance:Object):void
+        {
+            TextFlow.defaultConfiguration.manageTabKey = true;
+
+            if (instance == richEditableText)
+            {
+                richEditableText.addEventListener(FlexEvent.SELECTION_CHANGE, onSelectionChange);
+                richEditableText.textFlow.addEventListener(CompositionCompleteEvent.COMPOSITION_COMPLETE, onSelectionChange);
+                richEditableText.textFlow.addEventListener(TextOperationEvent.CHANGE, onUpdateComplete);
+                richEditableText.textFlow.addEventListener(CompositionCompleteEvent.COMPOSITION_COMPLETE, onUpdateComplete);
+                //richEditableText.textFlow.addEventListener(SelectionEvent.SELECTION_CHANGE, newBulletField_selectionChangeHandler);
+            }
+            else if (instance == boldButton)
+            {
+                boldButton.addEventListener(MouseEvent.CLICK, onBold);
+            }
+            else if (instance == italicButton)
+            {
+                italicButton.addEventListener(MouseEvent.CLICK, onItalic);
+            }
+            else if (instance == underlineButton)
+            {
+                underlineButton.addEventListener(MouseEvent.CLICK, onUnderline);
+            }
+            else if (instance == sectionStylesDropDownList)
+            {
+                sectionStylesDropDownList.addEventListener(Event.CHANGE, onSectionStyleChange);
+            }
+            else if (instance == colorPicker)
+            {
+                colorPicker.addEventListener(Event.CHANGE, onColorChange);
+            }
+            else if (instance == biggerFontButton)
+            {
+                biggerFontButton.addEventListener(MouseEvent.CLICK, onBiggerFont);
+            }
+            else if (instance == smallerFontButton)
+            {
+                smallerFontButton.addEventListener(MouseEvent.CLICK, onSmallerFont);
+            }
+            else if (instance == urlButton)
+            {
+                urlButton.addEventListener(MouseEvent.CLICK, onURL);
+            }
+            else if (instance == swfButton)
+            {
+                swfButton.addEventListener(MouseEvent.CLICK, onSWF);
+            }
+            else if (instance == listButton)
+            {
+                listButton.addEventListener(MouseEvent.CLICK, onList);
+            }
+            else if (instance == upButton)
+            {
+                upButton.addEventListener(MouseEvent.CLICK, onUpIndex);
+            }
+            else if (instance == bottomButton)
+            {
+                bottomButton.addEventListener(MouseEvent.CLICK, onBottomIndex);
+            }
+            else if (instance == symbolButton)
+            {
+                symbolButton.addEventListener(MouseEvent.CLICK, onSymbolButton);
+            }
+            else if (instance == symbolList)
+            {
+                symbolList.dataProvider = new ArrayCollection(SYMBOLS.split(""));
+                symbolList.addEventListener(MouseEvent.CLICK, onSymbolSelect);
+            }
+            else if(instance == alignLeftButton)
+            {
+                alignLeftButton.addEventListener(MouseEvent.CLICK, onAlignLeft);
+            }
+            else if(instance == alignCenterButton)
+            {
+                alignCenterButton.addEventListener(MouseEvent.CLICK, onAlignCenter);
+            }
+            super.partAdded(partName, instance);
+        }
+
+        override protected function partRemoved(partName:String, instance:Object):void
+        {
+            if (instance == richEditableText)
+            {
+                richEditableText.removeEventListener(FlexEvent.SELECTION_CHANGE, onSelectionChange);
+                richEditableText.textFlow.removeEventListener(CompositionCompleteEvent.COMPOSITION_COMPLETE, onSelectionChange);
+                richEditableText.textFlow.removeEventListener(TextOperationEvent.CHANGE, onUpdateComplete);
+                richEditableText.textFlow.removeEventListener(CompositionCompleteEvent.COMPOSITION_COMPLETE, onUpdateComplete);
+                //richEditableText.textFlow.removeEventListener(SelectionEvent.SELECTION_CHANGE, newBulletField_selectionChangeHandler);
+            }
+            else if (instance == boldButton)
+            {
+                boldButton.removeEventListener(MouseEvent.CLICK, onBold);
+            }
+            else if (instance == italicButton)
+            {
+                italicButton.removeEventListener(MouseEvent.CLICK, onItalic);
+            }
+            else if (instance == underlineButton)
+            {
+                underlineButton.removeEventListener(MouseEvent.CLICK, onUnderline);
+            }
+            else if (instance == sectionStylesDropDownList)
+            {
+                sectionStylesDropDownList.removeEventListener(Event.CHANGE, onSectionStyleChange);
+            }
+            else if (instance == colorPicker)
+            {
+                colorPicker.removeEventListener(Event.CHANGE, onColorChange);
+            }
+            else if (instance == biggerFontButton)
+            {
+                biggerFontButton.removeEventListener(MouseEvent.CLICK, onBiggerFont);
+            }
+            else if (instance == smallerFontButton)
+            {
+                smallerFontButton.removeEventListener(MouseEvent.CLICK, onSmallerFont);
+            }
+            else if (instance == urlButton)
+            {
+                urlButton.removeEventListener(MouseEvent.CLICK, onURL);
+            }
+            else if (instance == swfButton)
+            {
+                swfButton.removeEventListener(MouseEvent.CLICK, onSWF);
+            }
+            else if (instance == listButton)
+            {
+                listButton.removeEventListener(MouseEvent.CLICK, onList);
+            }
+            else if(instance == alignLeftButton)
+            {
+                alignLeftButton.removeEventListener(MouseEvent.CLICK, onAlignLeft);
+            }
+            else if(instance == alignCenterButton)
+            {
+                alignLeftButton.removeEventListener(MouseEvent.CLICK, onAlignCenter);
+            }
+            super.partRemoved(partName, instance);
+        }
+
+        private function onAlignCenter(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.textAlign = TextFormatAlign.CENTER;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onAlignLeft(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.textAlign = TextFormatAlign.LEFT;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onSelectionChange(event:*):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            boldButton.selected = (style.fontWeight == FontWeight.BOLD);
+            italicButton.selected = (style.fontStyle == FontStyle.ITALIC);
+            underlineButton.selected = (style.textDecoration == TextDecoration.UNDERLINE);
+            sectionStylesDropDownList.selectedItem = getSelectedSectionStyle(style);
+            colorPicker.selectedColor = style.color;
+            bottomButton.selected = style.baselineShift == "-40%";
+            upButton.selected = style.baselineShift == "40%";
+            alignLeftButton.selected = style.textAlign == TextFormatAlign.LEFT;
+            alignCenterButton.selected = style.textAlign == TextFormatAlign.CENTER;
+            newBulletField_selectionChangeHandler(null);
+            dispatchEvent(new Event(Event.CHANGE));
+
+        }
+
+        private function getSelectedSectionStyle(style:TextLayoutFormat):SectionStyleVO
+        {
+            for each(var sectionStyle:SectionStyleVO in sectionStyles)
+            {
+                if (sectionStyle.comparesTo(style))
+                {
+                    return sectionStyle;
+                }
+            }
+            return null;
+        }
+
+        private function onSectionStyleChange(event:Event):void
+        {
+            callLater(onSectionStyleChangeLater);
+        }
+
+        private function onSectionStyleChangeLater():void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.fontSize = SectionStyleVO(sectionStylesDropDownList.selectedItem).size;
+            style.fontFamily = SectionStyleVO(sectionStylesDropDownList.selectedItem).font;
+            style.fontWeight = SectionStyleVO(sectionStylesDropDownList.selectedItem).bold ? FontWeight.BOLD : FontWeight.NORMAL;
+            style.fontStyle = SectionStyleVO(sectionStylesDropDownList.selectedItem).italic ? FontPosture.ITALIC : FontPosture.NORMAL;
+            style.textDecoration = SectionStyleVO(sectionStylesDropDownList.selectedItem).underline ? TextDecoration.UNDERLINE : TextDecoration.NONE;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            sectionStylesDropDownList.closeDropDown(false);
+            richEditableText.setFocus();
+        }
+
+        /************************************/
+
+        private function onList(event:MouseEvent):void
+        {
+            if (event.target.selected)
+            {
+                addBullets(getSelectedParagraphs(richEditableText.textFlow));
+            } else
+            {
+                removeBullets(getSelectedParagraphs(richEditableText.textFlow));
+            }
+            richEditableText.setFocus();
+        }
+
+
+        /**
+         * adds bullet stylename to an array of paragraphs then refreshes the textarea
+         * @param p the paragraphs to apply the bullet to
+         */
+        private function addBullets(p:Array):void
+        {
+            for (var i:int = 0; i < p.length; i++)
+            {
+                p[i].paragraphStartIndent = 20;
+                p[i].styleName = "bullet";
+            }
+            callLater(refreshBullets, [richEditableText]);
+        }
+
+        /**
+         * removes bullet stylename from an array of paragraphs then refreshes the textarea
+         * @param p the paragraphs to remove the bullets from
+         */
+        private function removeBullets(p:Array):void
+        {
+            for (var i:int = 0; i < p.length; i++)
+            {
+                p[i].paragraphStartIndent = 0;
+                p[i].styleName = null;
+            }
+            callLater(refreshBullets, [richEditableText]);
+        }
+
+
+        use namespace tlf_internal;
+
+        /**
+         * Draws the bullets on the textfield based on styles of each line
+         */
+        public function refreshBullets(textField:RichEditableText):void
+        {
+            var bulletLayer:Sprite = textField.getChildByName("bulletSprite") as Sprite;
+            if (!bulletLayer || !bulletLayer.parent)
+            {
+                bulletLayer = new Sprite();
+                bulletLayer.name = "bulletSprite";
+                textField.addChild(bulletLayer);
+            }
+
+            bulletLayer.graphics.clear();
+            for (var i:int = 0; i < textField.textFlow.flowComposer.numLines; i++)
+            {
+                var l:TextFlowLine = textField.textFlow.flowComposer.getLineAt(i);
+                l.getTextLine(true);
+                var p:ParagraphElement = l.paragraph as ParagraphElement;
+                if (p && p.styleName == "bullet")
+                {
+                    var tl:TextLine = p.getTextBlock().firstLine;
+                    if (tl)
+                    {
+                        // draw's the bullet on the sprite canvas above the text lines
+                        var size:Number = getFontSize(p.getChildAt(0));
+                        var g:Graphics = bulletLayer.graphics;
+                        g.beginFill(0, 1);
+                        g.drawCircle(tl.x - 8, tl.y - (Math.round(size / 2) - 2), 2);
+                        g.endFill();
+                    }
+                }
+            }
+        }
+
+        /**
+         * @private
+         * return the font size for the paragraph element computed
+         */
+        private function getFontSize(p:FlowElement):Number
+        {
+            return p.computedFormat.fontSize;
+        }
+
+        /**
+         * refreshes the bullets on a composition complete (when text is entered into the text flow)
+         */
+        private function onUpdateComplete(event:*):void
+        {
+            richEditableText.callLater(refreshBullets, [richEditableText]);
+            dispatchEvent(new Event(Event.CHANGE));
+        }
+
+
+        /**
+         * on change update the selection toggle of the bullet button
+         */
+        protected function newBulletField_selectionChangeHandler(event:SelectionEvent):void
+        {
+            // get the selected paragraph
+            var paragraphs:Array = getSelectedParagraphs(richEditableText.textFlow);
+            var bulletFound:Boolean = false;
+            for (var i:int = 0; i < paragraphs.length && bulletFound != true; i++)
+            {
+                bulletFound = (paragraphs[i].styleName == "bullet");
+            }
+            listButton.selected = bulletFound;
+            onUpdateComplete(null);
+        }
+
+        /**
+         * return the set of selected paragraph for a textflow
+         *
+         *
+         */
+        private function getSelectedParagraphs(textFlow:TextFlow):Array
+        {
+            var paragraphs:Array = new Array();
+            var editManager:ISelectionManager = textFlow.interactionManager;
+            var firstElementParagraph:ParagraphElement = editManager.textFlow.findLeaf(editManager.getSelectionState().absoluteStart) ? editManager.textFlow.findLeaf(editManager.getSelectionState().absoluteStart).getParagraph() : null;
+            var lastElementParagraph:ParagraphElement = editManager.textFlow.findLeaf(editManager.getSelectionState().absoluteEnd) ? editManager.textFlow.findLeaf(editManager.getSelectionState().absoluteEnd).getParagraph() : null;
+
+            if (firstElementParagraph)
+                paragraphs.push(firstElementParagraph);
+
+            var currentElementParagraph:ParagraphElement = firstElementParagraph;
+
+            while (currentElementParagraph != lastElementParagraph)
+            {
+                currentElementParagraph = currentElementParagraph.getNextParagraph();
+                paragraphs.push(currentElementParagraph);
+            }
+
+            return paragraphs;
+        }
+
+        /****************************************************************************************************/
+        private function onBiggerFont(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.fontSize += FONT_STEP;
+            if (style.fontSize > MAXIMUM_SIZE)
+                style.fontSize = MAXIMUM_SIZE;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onSmallerFont(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.fontSize -= FONT_STEP;
+            if (style.fontSize < MINIMUM_SIZE)
+                style.fontSize = MINIMUM_SIZE;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onColorChange(event:Event):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.color = colorPicker.selectedColor;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onBold(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.fontWeight = (style.fontWeight == FontWeight.BOLD) ? FontWeight.NORMAL : FontWeight.BOLD;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onItalic(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.fontStyle = (style.fontStyle == FontPosture.ITALIC) ? FontPosture.NORMAL : FontPosture.ITALIC;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onUnderline(event:MouseEvent):void
+        {
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.textDecoration = (style.textDecoration == TextDecoration.UNDERLINE) ? TextDecoration.NONE : TextDecoration.UNDERLINE;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onUpIndex(event:MouseEvent):void
+        {
+
+            if(bottomButton.selected && event)
+            {
+                bottomButton.selected = false;
+                onBottomIndex(null);
+            }
+
+            var current:Number = richEditableText.selectionAnchorPosition;
+            var prevFontSize:Number = 12;
+            while (current >= 1)
+            {
+                var prevStyle:TextLayoutFormat = richEditableText.getFormatOfRange(null, current - 1, current - 1);
+                var currentStyle:TextLayoutFormat = richEditableText.getFormatOfRange(null, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+                //ExternalInterface.call("console.log", current + ", " + Number(prevStyle.fontSize) + ", " + Number(currentStyle.fontSize))
+                if (Number(prevStyle.fontSize) > Number(currentStyle.fontSize) || upButton.selected)
+                {
+                    prevFontSize = Number(prevStyle.fontSize);
+                    break;
+                }
+                current--;
+            }
+
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.baselineShift = upButton.selected ? "40%" : "0%";
+            if(upButton.selected)
+                prevFontSize *=.8;
+            style.fontSize = prevFontSize;
+            //style.fontSize = upButton.selected ? Number(prevStyle.fontSize) * .7 : prevStyle.fontSize;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+            //bottomButton.selected = false;
+        }
+
+        private function onBottomIndex(event:MouseEvent):void
+        {
+            if(upButton.selected && event)
+            {
+                upButton.selected = false;
+                onUpIndex(null);
+            }
+            var current:Number = richEditableText.selectionAnchorPosition;
+            var prevFontSize:Number = 12;
+            while (current >= 1)
+            {
+                var prevStyle:TextLayoutFormat = richEditableText.getFormatOfRange(null, current - 1, current - 1);
+                var currentStyle:TextLayoutFormat = richEditableText.getFormatOfRange(null, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+                //ExternalInterface.call("console.log", current + ", " + Number(prevStyle.fontSize) + ", " + Number(currentStyle.fontSize))
+                if (Number(prevStyle.fontSize) > Number(currentStyle.fontSize) || bottomButton.selected)
+                {
+                    prevFontSize = Number(prevStyle.fontSize);
+                    break;
+                }
+                current--;
+            }
+
+            var style:TextLayoutFormat = richEditableText.getFormatOfRange();
+            style.baselineShift = bottomButton.selected ? "-40%" : "0%";
+            if(bottomButton.selected)
+                prevFontSize *=.8;
+            style.fontSize = prevFontSize;
+            //style.fontSize = bottomButton.selected ? Number(prevStyle.fontSize) * .7 : prevStyle.fontSize;
+            richEditableText.setFormatOfRange(style, richEditableText.selectionAnchorPosition, richEditableText.selectionActivePosition);
+            richEditableText.setFocus();
+        }
+
+        private function onSymbolButton(event:MouseEvent):void
+        {
+            if (!symbolButton.selected)
+            {
+                onSymbolEnd(null);
+                return;
+            }
+            event.stopImmediatePropagation();
+            symbolList.visible = true;
+            //FlexGlobals.topLevelApplication.addEventListener(MouseEvent.CLICK, onSymbolEnd);
+        }
+
+        private function onSymbolEnd(event:MouseEvent):void
+        {
+            symbolButton.selected = false;
+            //FlexGlobals.topLevelApplication.removeEventListener(MouseEvent.CLICK, onSymbolEnd);
+            symbolList.visible = false;
+        }
+
+        private function onURL(event:MouseEvent):void
+        {
+            var popup:URLPopup = new URLPopup();
+            popup.richEditableText = richEditableText;
+            PopUpManager.addPopUp(popup, this, true);
+            PopUpManager.centerPopUp(popup)
+        }
+
+        private function onSWF(event:MouseEvent):void
+        {
+            var swfHelper:SWFHelper = new SWFHelper();
+            swfHelper.browse(richEditableText);
+        }
+
+        /**
+         * Import methods
+         */
+
+        public function importFromHTML(text:String):void
+        {
+            richEditableText.textFlow = TextConverter.importToFlow(text, TextConverter.TEXT_FIELD_HTML_FORMAT);
+        }
+
+        public function importFromText(text:String):void
+        {
+            richEditableText.textFlow = TextConverter.importToFlow(text, TextConverter.PLAIN_TEXT_FORMAT);
+        }
+
+        public function importFromTextFlow(text:String):void
+        {
+            stage.focus = null;
+            if (text == null)
+                richEditableText.text = "";
+
+            richEditableText.textFlow = TextConverter.importToFlow(text, TextConverter.TEXT_LAYOUT_FORMAT);
+            var swfs:Array = richEditableText.textFlow.getElementsByTypeName("img");
+            for each(var swf:InlineGraphicElement in swfs)
+            {
+                var ba:ByteArray = Zip.getInstance().imagesForSave[swf.source];
+                if (ba)
+                {
+
+                    var factory:EmbedImageFactory = new EmbedImageFactory();
+                    factory.createImageFromByteArray(ba, swf, String(swf.source));
+                }
+            }
+        }
+
+        /**
+         * Export methods
+         */
+
+        public function exportAsHTML():String
+        {
+            return TextConverter.export(richEditableText.textFlow,
+                    TextConverter.TEXT_FIELD_HTML_FORMAT,
+                    ConversionType.STRING_TYPE).toString();
+        }
+
+        public function exportAsText():String
+        {
+            return TextConverter.export(richEditableText.textFlow,
+                    TextConverter.PLAIN_TEXT_FORMAT,
+                    ConversionType.STRING_TYPE).toString();
+        }
+
+        public function exportAsTextFlow():String
+        {
+            return TextConverter.export(richEditableText.textFlow,
+                    TextConverter.TEXT_LAYOUT_FORMAT,
+                    ConversionType.STRING_TYPE).toString();
+        }
+
+        /**
+         * Predefined section styles
+         */
+        public function get sectionStyles():ArrayCollection
+        {
+            return _sectionStyles;
+        }
+
+        private function onSymbolSelect(event:Event):void
+        {
+            if (symbolList.selectedItem)
+            {
+                //var pos = richEditableText.selectionActivePosition;
+                //var pos2 = richEditableText.selectionAnchorPosition;
+                richEditableText.insertText(symbolList.selectedItem);
+                //richEditableText.selectRange(pos2,  pos);
+            }
+            symbolList.selectedItem = null;
+        }
+        ]]></fx:Script>
+</s:SkinnableComponent>

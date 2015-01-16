@@ -1,0 +1,308 @@
+<engine copy="Editorial Planeta" version="1">
+  <main layout="8">
+    <title>Escribir una receta</title>
+    <footer>Selecciona una imagen</footer>
+  </main>
+  <sections>
+    <section i="0" star="false" hasSubsections="false">
+      <submenu>
+        <sections/>
+      </submenu>
+      <pages>
+        <page i="0" visible="true" color="#FFFF99">
+          <title>Dificultad baja</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Escribe una receta para preparar una ensalada. Recuerda que deben constar los siguientes apartados:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Inventario.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Instrucciones.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Consejos y advertencias.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_0_1_page1.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="0" visible="true" color="#FFFF99">
+          <title>El inventario</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p paragraphStartIndent="0"&gt;&lt;span&gt;Los ingredientes que necesitas para elaborar tu receta son:&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="0"&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Lechuga.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Zanahorias.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Olivas.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Huevo.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Maíz.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Aceite.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Sal.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Vinagre.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="0"&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p clearFloats="none" direction="ltr" justificationRule="auto" justificationStyle="auto" leadingModel="auto" paragraphEndIndent="0" paragraphSpaceAfter="0" paragraphSpaceBefore="0" paragraphStartIndent="0" textAlign="start" textAlignLast="start" textIndent="0" textJustify="interWord" wordSpacing="100%,50%,150%"&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="normal" fontWeight="bold" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;¡Atención!&lt;/span&gt;&lt;span&gt; No olvides detallar las cantidades.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_0_1_page2.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="0" visible="true" color="#FFFF99">
+          <title>Las instrucciones</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Recuerda que en el apartado de instrucciones debes utilizar una lista variada de verbos en imperativo. A continuación te ayudamos proporcionándote algunos infinitivos:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Cortar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Lavar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Pelar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Hervir.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Escaldar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Rallar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Trocear.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_0_1_page3.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="0" visible="true" color="#FFFF99">
+          <title>Consejos y advertencias</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Aprovecha este apartado para sugerir recomendaciones a tus lectores. Estas pueden ser:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Otros ingredientes que puedan utilizarse.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Salsas alternativas como acompañamiento.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Trucos para mejorar la calidad del plato.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_0_1_page4.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="0" visible="false" color="#FFCC00">
+          <title/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="0" visible="false" color="#FFCC00">
+          <title/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+      </pages>
+      <menuImage path="medias/mainMenu_0.jpg" border="false">
+        <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Dificultad baja&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+      </menuImage>
+    </section>
+    <section i="1" star="false" hasSubsections="false">
+      <submenu>
+        <sections/>
+      </submenu>
+      <pages>
+        <page i="1" visible="true" color="#99CCCC">
+          <title>Dificultad media</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Escribe una receta para preparar una pizza. Recuerda que deben constar los siguientes apartados:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Inventario.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Instrucciones.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Consejos y advertencias.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_1_1_page1.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="1" visible="true" color="#99CCCC">
+          <title>El inventario</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Los ingredientes que necesitas para elaborar tu receta son:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Masa para pizzas.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Tomate&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Atún.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Olivas negras.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Pimiento rojo&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Champiñones.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Cebolla.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Queso.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="0"&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p clearFloats="none" direction="ltr" justificationRule="auto" justificationStyle="auto" leadingModel="auto" paragraphEndIndent="0" paragraphSpaceAfter="0" paragraphSpaceBefore="0" paragraphStartIndent="0" textAlign="start" textAlignLast="start" textIndent="0" textJustify="interWord" wordSpacing="100%,50%,150%"&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="normal" fontWeight="bold" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;¡Atención!&lt;/span&gt;&lt;span&gt; No olvides detallar las cantidades.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_1_1_page2.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="1" visible="true" color="#99CCCC">
+          <title>Las instrucciones</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Recuerda que en el apartado de instrucciones debes utilizar una lista variada de verbos en imperativo. A continuación te ayudamos proporcionándote algunos infinitivos:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Cortar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Lavar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Pelar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Freír.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Pochar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Caramelizar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Hornear.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Esparcir.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Derretir.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_1_1_page3.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="1" visible="true" color="#99CCCC">
+          <title>Consejos y advertencias</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Aprovecha este apartado para sugerir recomendaciones a tus lectores. Estas pueden ser:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Otros ingredientes que puedan utilizarse.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Salsas alternativas como acompañamiento.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Trucos para mejorar la calidad del plato.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_1_1_page4.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="1" visible="false" color="#FFCC00">
+          <title/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="1" visible="false" color="#FFCC00">
+          <title/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+      </pages>
+      <menuImage path="medias/mainMenu_1.jpg" border="false">
+        <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Dificultad media&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+      </menuImage>
+    </section>
+    <section i="2" star="false" hasSubsections="false">
+      <submenu>
+        <sections/>
+      </submenu>
+      <pages>
+        <page i="2" visible="true" color="#9999FF">
+          <title>Dificultad alta</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Escribe una receta para preparar un bizcocho de limón. Recuerda que deben constar los siguientes apartados:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Inventario.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Instrucciones.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Consejos y advertencias.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_2_1_page1.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="2" visible="true" color="#9999FF">
+          <title>El inventario</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Los ingredientes que necesitas para elaborar tu receta son:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Harina.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Huevos.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Mantequilla.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Levadura.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Azúcar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Aceite de oliva.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Yogur de limón.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Limón.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Azúcar glas.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="0"&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p clearFloats="none" direction="ltr" justificationRule="auto" justificationStyle="auto" leadingModel="auto" paragraphEndIndent="0" paragraphSpaceAfter="0" paragraphSpaceBefore="0" paragraphStartIndent="0" textAlign="start" textAlignLast="start" textIndent="0" textJustify="interWord" wordSpacing="100%,50%,150%"&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="normal" fontWeight="bold" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;¡Atención! &lt;/span&gt;&lt;span&gt;No olvides detallar las cantidades.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_2_1_page2.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="2" visible="true" color="#9999FF">
+          <title>Las instrucciones</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Recuerda que en el apartado de instrucciones debes utilizar una lista variada de verbos en imperativo. A continuación te ayudamos proporcionándote algunos infinitivos:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Batir.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Añadir.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Rallar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Untar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Hornear.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Mezclar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Espolvorear.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Tamizar.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Incorporar.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_2_1_page3.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="2" visible="true" color="#9999FF">
+          <title>Consejos y advertencias</title>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Aprovecha este apartado para sugerir recomendaciones a tus lectores. Estas pueden ser:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Otros ingredientes que puedan utilizarse.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Salsas alternativas como acompañamiento.&lt;/span&gt;&lt;/p&gt;&lt;p paragraphStartIndent="20" styleName="bullet"&gt;&lt;span&gt;Trucos para mejorar la calidad del plato.&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="medias/section_2_1_page4.jpg" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="2" visible="false" color="#FFCC00">
+          <title/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+        <page i="2" visible="false" color="#FFCC00">
+          <title/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+        </page>
+      </pages>
+      <menuImage path="medias/mainMenu_2.jpg" border="false">
+        <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;Dificultad alta&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+      </menuImage>
+    </section>
+  </sections>
+</engine>

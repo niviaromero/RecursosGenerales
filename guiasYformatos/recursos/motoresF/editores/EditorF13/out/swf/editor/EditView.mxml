@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:editor="editor.*" xmlns:texteditor="module.texteditor.*"
+         creationComplete="init()" width="100%">
+
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+
+    <fx:Script><![CDATA[
+        import module.image.assets.Image2Popup;
+
+        import mx.collections.ArrayCollection;
+
+        import mx.core.FlexGlobals;
+        import mx.managers.PopUpManager;
+
+        import spark.events.IndexChangeEvent;
+
+        [Bindable]
+        private var model:Model = Model.getInstance();
+
+        [Bindable]
+        private var mode:String;
+
+        private function saveZip():void
+        {
+            //model.xml.main.title = title.text;
+            saveXML();
+            var f:FileReference = new FileReference();
+            f.save(Zip.getInstance().makeZip(), "new.zip");
+            //Alert.show(model.xml.toXMLString());
+            // ExternalInterface.call("console.log", model.xml.toXMLString());
+        }
+
+
+        private function init():void
+        {
+            title.text = model.xml.@title;
+            tabsCount.selectedItem = Math.max(1, model.xml.children().length());
+            dropDownList1_changeHandler(null);
+        }
+
+        var pp:PreviewPopup;
+
+        public function preview():void
+        {
+            saveXML();
+            var _xml_str:String = model.xml.toString();
+            _xml_str = _xml_str.replace(/source="[^"]*"/gm, 'source="medias/placeholder.png"');
+            if(!pp)
+            {
+                pp = new PreviewPopup();
+
+                PopUpManager.addPopUp(pp, FlexGlobals.topLevelApplication as DisplayObject, true);
+                PopUpManager.centerPopUp(pp);
+            }
+            else
+            {
+                pp.visible = true;
+            }
+            pp.init(_xml_str);
+        }
+
+        private function saveXML():void
+        {
+            model.xml = model.baseXML.copy();
+            model.xml.@title = title.text;
+
+            s1.save();
+            if(tabsCount.selectedItem > 1) s2.save();
+            if(tabsCount.selectedItem > 2) s3.save();
+            if(tabsCount.selectedItem > 2) s4.save();
+            if(tabsCount.selectedItem > 4) s5.save();
+            if(tabsCount.selectedItem > 4) s6.save();
+            if(tabsCount.selectedItem > 6) s7.save();
+            if(tabsCount.selectedItem > 6) s8.save();
+        }
+
+        private function dropDownList1_changeHandler(event:IndexChangeEvent):void
+        {
+             for (var i:uint =0; i<tabBar.dataGroup.numElements; i++)
+             {
+                 tabBar.dataGroup.getElementAt(i).visible = i < tabsCount.selectedItem;
+             }
+        }
+        ]]></fx:Script>
+
+    
+    <s:HGroup verticalAlign="middle">
+        <s:Label text="Título"/>
+        <s:TextInput id="title" width="250"/>
+    </s:HGroup>
+    <s:Spacer height="25"/>
+    <s:DropDownList id="tabsCount" selectedIndex="0" dataProvider="{new ArrayCollection([1,2,4,6,8])}" change="dropDownList1_changeHandler(event)">
+    </s:DropDownList>
+    <s:TabBar id="tabBar" dataProvider="{ws}" width="600"/>
+    <mx:ViewStack id="ws" width="600" creationPolicy="all">
+        <s:NavigatorContent label="{'Indroducción' + s1.indicator}">
+            <editor:SectionEdit id="s1" nr="0" showTitle="{tabsCount.selectedItem &gt; 1}"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent label="{'Tarea' + s2.indicator}">
+            <editor:SectionEdit id="s2" nr="1"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent label="{'Proceso' + s3.indicator}">
+            <editor:SectionEdit id="s3" nr="2"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent label="{'Conclusión' + s4.indicator}">
+            <editor:SectionEdit id="s4" nr="3"/>
+        </s:NavigatorContent>
+        <!-- -->
+        <s:NavigatorContent label="{'Extra 1' + s5.indicator}" enabled="{tabsCount.selectedItem &gt; 4}">
+            <editor:SectionEdit id="s5" nr="4"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent label="{'Extra 2' + s6.indicator}" enabled="{tabsCount.selectedItem &gt; 4}">
+            <editor:SectionEdit id="s6" nr="5"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent label="{'Extra 3' + s7.indicator}" enabled="{tabsCount.selectedItem &gt; 6}">
+            <editor:SectionEdit id="s7" nr="6"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent label="{'Extra 4' + s8.indicator}" enabled="{tabsCount.selectedItem &gt; 6}">
+            <editor:SectionEdit id="s8" nr="7"/>
+        </s:NavigatorContent>
+    </mx:ViewStack>
+	
+	<s:Spacer height="125"/>
+	<s:HGroup verticalAlign="bottom">
+        <s:Button width="200" height="50" fontWeight="bold" label="Exporta ZIP" click="saveZip()" visible="{model.xml}"
+                  enabled="{model.allFilesReady}"/>
+        <s:Spacer width="90"/>
+        <s:Button width="100" height="20" label="Salir"
+                  click=" model.xml = null;  Zip.getInstance().imagesForSave = new Dictionary(); Image2Popup.saveData = new Dictionary(); MainView(parent).currentState = 'start';" visible="{model.xml}"/>
+        <s:Button width="200" height="20" label="Previsualización"
+                  click="preview()" visible="{model.xml}" enabled="{model.allFilesReady}" fontWeight="bold"/>
+    </s:HGroup>
+
+</s:Group>

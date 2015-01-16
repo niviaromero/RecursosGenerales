@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:editor="editor.*" width="100%" height="100%" creationComplete="init()" minWidth="900" minHeight="900">
+    <s:layout>
+        <s:VerticalLayout paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" horizontalAlign="center"/>
+    </s:layout>
+    <s:Group width="700">
+        <s:Image source="@Embed(source='../assets/logo.swf', symbol='logo')" width="30" height="30"/>
+        <s:Label id="nameLabel" fontSize="15" fontWeight="bold" verticalCenter="0" left="45"/>
+    </s:Group>
+    <s:Spacer height="10"/>
+    <editor:MainView/>
+
+
+    <fx:Script><![CDATA[
+        import mx.core.FlexGlobals;
+
+        public static var VERSION:String = "1";
+
+        [Bindable]
+        public static function get NAME():String
+        {
+            return "F13-Webquest";
+        }
+
+        public static function get COPY():String
+        {
+            return "Editorial Planeta";
+        }
+
+        private function init():void
+        {
+            nameLabel.text = NAME;
+        }
+        ]]></fx:Script>
+</s:Application>

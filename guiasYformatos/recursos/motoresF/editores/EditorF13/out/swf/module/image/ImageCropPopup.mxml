@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         x="5" y="11" width="854" height="434"
+         title="Encuadrador"
+         creationComplete="init()"
+        >
+    <s:layout>
+        <s:BasicLayout/>
+    </s:layout>
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+
+
+    <s:Button x="770" y="370" label="Cancelar" id="cancelar" click="cancelar_clickHandler(event)"/>
+    <s:Button x="692" y="370" label="Guardar" id="guardar" click="guardar_clickHandler(event)"
+              visible="{original_img.source}"/>
+    <s:Button x="532" y="370" label="Utilizar toda la imágen" id="total" click="total_clickHandler(event)"
+              visible="{original_img.source}"/>
+    <s:Button id="seleccionar" x="10" y="370" label="Seleccionar Imagen" click="seleccionar_clickHandler(event)"/>
+
+    <s:Label y="340" x="10" text="Arrastra el cursor para crear un cuadro de selección personalizado"
+             fontStyle="italic"/>
+
+    <s:Group x="10" y="33" width="400" height="300" contentBackgroundColor="#AC2828">
+        <s:layout>
+            <s:VerticalLayout/>
+        </s:layout>
+        <s:Label text="Imagen Original"/>
+        <s:Group id="original_group" width="100%" height="100%">
+            <s:layout>
+                <s:BasicLayout/>
+            </s:layout>
+
+            <s:Rect x="0" y="0"
+                    width="100%"
+                    height="100%">
+                <s:stroke>
+                    <s:SolidColorStroke color="#000000" alpha="0.5" weight="1"/>
+                </s:stroke>
+                <s:fill>
+                    <s:BitmapFill
+                            source="@Embed('assets/stripeGray.png')"
+                            fillMode="repeat"/>
+                </s:fill>
+            </s:Rect>
+
+            <s:Image id="original_img" backgroundAlpha="0.3" backgroundColor="#FFFFFF" smooth="true">
+            </s:Image>
+            <mx:UIComponent mouseEnabled="false" mouseChildren="false" enabled="false" width="100%" height="100%"
+                            id="ui_comp"/>
+
+        </s:Group>
+    </s:Group>
+
+    <s:Group x="440" y="34" width="400" height="300">
+        <s:layout>
+            <s:VerticalLayout/>
+        </s:layout>
+        <s:Label x="47" y="10" text="Imagen encuadrada"/>
+        <s:Group width="100%" height="100%">
+            <s:Rect x="0" y="0"
+                    width="100%"
+                    height="100%">
+                <s:stroke>
+                    <s:SolidColorStroke color="#000000" alpha="0.5" weight="1"/>
+                </s:stroke>
+                <s:fill>
+                    <s:BitmapFill
+                            source="@Embed('/module/image/assets/stripeGray.png')"
+                            fillMode="repeat"/>
+                </s:fill>
+
+            </s:Rect>
+            <s:Scroller width="100%" height="100%" horizontalScrollPolicy="auto" verticalScrollPolicy="auto">
+                <s:Group width="100%" height="100%">
+                    <s:Image id="cropped_img">
+                    </s:Image>
+                </s:Group>
+            </s:Scroller>
+        </s:Group>
+    </s:Group>
+
+
+    <fx:Script>
+        <![CDATA[
+        import mx.graphics.codec.JPEGEncoder;
+        import mx.graphics.codec.PNGEncoder;
+        import mx.managers.PopUpManager;
+
+        private var midialogo:EncuadradorForm;
+        private var _fileRef:FileReference;
+        private var _fileSave:FileReference;
+        private var _fileFilter:FileFilter;
+
+        private var offsetX:Number = 0;
+        private var offsetY:Number = 0;
+        public var imgh:Number;
+        public var imgw:Number;
+
+        [Bindable]
+        public var path1:String = "HOLA";
+
+
+        // Image scaling variables
+        private var imageScaleFactor:Number;
+        private var imageScaledWidth:Number;
+        private var imageScaledHeight:Number;
+        private var imageBitmapData:BitmapData;
+        private var croppedByteArray:ByteArray;
+        private var componentWidth:Number;
+        private var componentHeight:Number;
+
+        // no usadas aun
+        private var imageLocation:Point;
+        private var scaledImageBitmapData:BitmapData;
+        public var externalImage:Image;
+
+        private static var dataDictionary:Dictionary = new Dictionary();
+
+        public var uniqueName:String;
+
+        private function get data():Object
+        {
+            return dataDictionary[uniqueName];
+        }
+
+        private function set data(value:Object):void
+        {
+            dataDictionary[uniqueName] = value;
+        }
+
+        public function init():void
+        {
+            componentWidth = original_group.width;
+            componentHeight = original_group.height;
+
+            if (!data)
+            {
+                searchFile();
+            }
+            else
+            {
+                original_img.source = data.org;
+                croppedByteArray = data.crop;
+                cropped_img.source = data.crop;
+                offsetX = data.oX;
+                offsetY = data.oY;
+                //imageBitmapData = data.orgBD;
+                var loader:Loader = new Loader();
+                loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoaderComplete);
+                loader.loadBytes(data.orgData);
+
+            }
+
+
+        }
+
+        protected function guardar_clickHandler(event:MouseEvent):void
+        {
+            if (!croppedByteArray)
+            {
+                mouse_startx = original_img.x;
+                mouse_starty = original_img.y;
+                offsetX = original_img.x
+                offsetY = original_img.y;
+                mouse_endx = original_img.width + original_img.x;
+                mouse_endy = original_img.height + original_img.y;
+                croppedByteArray = convertToByteArray();
+            }
+            if (externalImage)
+                externalImage.source = croppedByteArray;
+
+            data = {oX: offsetX, oY: offsetY, sX: mouse_startx, sY: mouse_starty, eX: mouse_endx, eY:mouse_endy, orgData: _fileRef ? _fileRef.data : data.orgData, org: original_img.source, crop: croppedByteArray};
+            closePopup();
+            //_fileSave.save(croppedByteArray, "imagen.png");
+
+        }
+
+        protected function total_clickHandler(event:MouseEvent):void
+        {
+            if (true)
+            {
+                mouse_startx = original_img.x;
+                mouse_starty = original_img.y;
+                offsetX = original_img.x
+                offsetY = original_img.y;
+                mouse_endx = original_img.width + original_img.x;
+                mouse_endy = original_img.height + original_img.y;
+                croppedByteArray = convertToByteArray();
+            }
+            if (externalImage)
+                externalImage.source = croppedByteArray;
+
+            data = {oX: offsetX, oY: offsetY, sX: mouse_startx, sY: mouse_starty, eX: mouse_endx, eY:mouse_endy, orgData: _fileRef ? _fileRef.data : data.orgData, org: original_img.source, crop: croppedByteArray};
+            closePopup();
+            //_fileSave.save(croppedByteArray, "imagen.png");
+
+        }
+
+        private function searchFile():void
+        {
+            _fileFilter = new FileFilter("Imagenes *.jpg,*.jpeg,*.png,*.gif", "*.jpg;*.jpeg;*.png;*.gif");
+            _fileRef = new FileReference();
+
+            _fileRef.addEventListener(Event.SELECT, onFileSelect);
+            _fileRef.addEventListener(Event.CANCEL, onFileCancel);
+            _fileRef.browse([_fileFilter]);
+        }
+
+        private function onFileSelect(event:Event):void
+        {
+            _fileSave = new FileReference();
+            _fileSave.addEventListener(Event.COMPLETE, onSaveComplete);
+            _fileRef.addEventListener(Event.COMPLETE, onFileComplete);
+            _fileRef.load();
+        }
+
+        private function onFileCancel(event:Event):void
+        {
+            //closePopup();
+        }
+
+        private function onSaveComplete(event:Event):void
+        {
+            closePopup();
+        }
+
+        private function onFileComplete(event:Event):void
+        {
+            var loader:Loader = new Loader();
+            loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoaderComplete);
+            loader.loadBytes(_fileRef.data);
+        }
+
+
+        private function onLoaderComplete(event:Event):void
+        {
+            //original_img.source = event.currentTarget.loader.content as Bitmap;
+            cropped_img.source = event.currentTarget.loader.content as Bitmap;
+            if (s)
+            {
+                s.graphics.clear();
+            }
+
+            if (imageBitmapData != null)
+            {
+                imageBitmapData.dispose();
+            }
+
+            imageBitmapData = (event.currentTarget.loader.content as Bitmap).bitmapData;
+
+
+            var imageWidth:Number = imageBitmapData.width;
+            var imageHeight:Number = imageBitmapData.height;
+
+
+            // Initialize the scaling factor to 1 (unscaled)
+            imageScaleFactor = 1;
+
+            // If the image size is larger than the component size
+
+            if (imageWidth > componentWidth || imageHeight > componentHeight)
+            {
+
+                // Determine the ratio of the size of the loaded image to the component's size
+
+                var newXScale:Number = imageWidth == 0 ? 1 : componentWidth / imageWidth;
+                var newYScale:Number = imageHeight == 0 ? 1 : componentHeight / imageHeight;
+
+                // Calculate the scaling factor based on which dimension must be scaled in order for the image to fit within the component
+
+                var x:Number = 0;
+                var y:Number = 0;
+
+                if (newXScale > newYScale)
+                {
+                    x = Math.floor((componentWidth - imageWidth * newYScale));
+                    imageScaleFactor = newYScale;
+
+
+                }
+                else
+                {
+                    y = Math.floor((componentHeight - imageHeight * newXScale));
+                    imageScaleFactor = newXScale;
+
+
+                }
+
+
+                // Create a matrix to perform the image scaling
+                var scaleMatrix:Matrix = new Matrix();
+                scaleMatrix.scale(imageScaleFactor, imageScaleFactor);
+
+                // Calculate the scaled size of the image
+                imageScaledWidth = Math.ceil(imageBitmapData.width * imageScaleFactor);
+                imageScaledHeight = Math.ceil(imageBitmapData.height * imageScaleFactor);
+
+                // Calculate the new coordinates for the image so that it is centered within the component
+                imageLocation = new Point(x - ((componentWidth - imageScaledWidth) / 2), y - ((componentHeight - imageScaledHeight) / 2))
+
+                // If there is a scaled BitmapData object from a previous image, dispose of the data
+                if (scaledImageBitmapData != null) scaledImageBitmapData.dispose();
+
+                // Create a new BitmapData object to hold the scaled image
+
+
+                scaledImageBitmapData = new BitmapData(imageScaledWidth, imageScaledHeight, true, 0x00FFFFFF);
+
+                // Create the scaled image (use smoothing)
+                scaledImageBitmapData.draw(imageBitmapData, scaleMatrix, null, null, null, true);
+
+                if (data)
+                {
+                    mouseDown(null);
+                    mouse_startx = data.sX;
+                    mouse_starty = data.sY;
+                    mouse_endx = data.eX;
+                    mouse_endy = data.eY;
+
+                    dragging = true;
+                    encuadrarImagen();
+                    mouseUp(null);
+                    dragging = false;
+                }
+
+            }
+
+            // Else the image size is equal to or smaller than the component size
+
+            else
+            {
+
+                // The scaled size is the actual size of the image
+
+                imageScaledWidth = imageWidth;
+                imageScaledHeight = imageHeight;
+
+                // Set the new coordinates for the image so that it is centered within the component
+
+                imageLocation = new Point((componentWidth - imageWidth) / 2, (componentHeight - imageHeight) / 2);
+
+                // The image is unscaled, so just clone the BitmapData
+
+                scaledImageBitmapData = imageBitmapData.clone();
+            }
+
+
+            original_img.source = scaledImageBitmapData;
+            original_img.x = imageLocation.x;
+            original_img.y = imageLocation.y;
+
+            offsetX = original_img.x;
+            offsetY = original_img.y;
+
+            path1 = offsetX + ", " + offsetY;
+
+            addHandlers();
+        }
+
+        // variables para el recuadro
+        private var s:Sprite;
+        private var mouse_startx:Number;
+        private var mouse_starty:Number;
+        private var mouse_endx:Number;
+        private var mouse_endy:Number;
+
+
+        private var dragging:Boolean = false;
+
+        private function addHandlers():void
+        {
+            original_img.addEventListener(MouseEvent.MOUSE_DOWN, mouseDown);
+            original_img.addEventListener(MouseEvent.MOUSE_UP, mouseUp);
+            original_img.addEventListener(MouseEvent.MOUSE_MOVE, mouseMove);
+            original_img.addEventListener(MouseEvent.ROLL_OUT, mouseOut);
+        }
+
+        private function convertToByteArray():ByteArray
+        {
+
+
+            var encoder:JPEGEncoder = new JPEGEncoder(90);
+            var matrix:Matrix = new Matrix(1, 0, 0, 1, 0, 0);
+            var bmd:BitmapData = new BitmapData(Math.abs(mouse_startx - mouse_endx) / imageScaleFactor, Math.abs(mouse_starty - mouse_endy) / imageScaleFactor, true, 0x00FFFFFF);
+            var translate_point:Point = new Point();
+
+            var _mouse_startx:Number = mouse_startx - offsetX;
+            var _mouse_starty:Number = mouse_starty - offsetY;
+            var _mouse_endx:Number = mouse_endx - offsetX;
+            var _mouse_endy:Number = mouse_endy - offsetY;
+
+            if (_mouse_startx < _mouse_endx)
+            {
+                translate_point.x = -(_mouse_startx) / imageScaleFactor;
+            }
+            else
+            {
+                translate_point.x = -_mouse_endx / imageScaleFactor;
+            }
+
+            if (_mouse_starty < _mouse_endy)
+            {
+                translate_point.y = -_mouse_starty / imageScaleFactor;
+            }
+            else
+            {
+                translate_point.y = -_mouse_endy / imageScaleFactor;
+            }
+
+
+            var trans:Matrix = new Matrix(); //a transform matrix
+            trans.translate(translate_point.x, translate_point.y); //scale the image
+            bmd.draw(imageBitmapData, trans); //draw original image but scale it
+
+            return encoder.encode(bmd);
+        }
+
+        protected function mouseDown(event:MouseEvent):void
+        {
+            dragging = true;
+            mouse_startx = original_img.mouseX + offsetX;
+            mouse_starty = original_img.mouseY + offsetY;
+
+            if (s == null)
+            {
+
+
+                s = new Sprite();
+                //var ui:UIComponent = new UIComponent();
+                ui_comp.addChild(s);
+
+            }
+
+            s.graphics.clear();
+
+        }
+
+        protected function mouseUp(event:MouseEvent):void
+        {
+            if (dragging)
+            {
+                dragging = false;
+                if (mouse_startx != mouse_endx && mouse_starty != mouse_endy)
+                {
+                    croppedByteArray = convertToByteArray();
+                    cropped_img.source = croppedByteArray;
+                }
+            }
+        }
+
+        protected function mouseMove(event:MouseEvent):void
+        {
+            if (dragging)
+            {
+                if (false || imgw > 0 && imgh > 0)
+                {
+                    mouse_endx = original_img.mouseX + offsetX;
+                    mouse_endy = original_img.mouseX * imgh / imgw + offsetY;
+                }
+                else
+                {
+                    mouse_endx = original_img.mouseX + offsetX;
+                    mouse_endy = original_img.mouseY + offsetY;
+                }
+
+                encuadrarImagen();
+            }
+        }
+
+        protected function mouseOut(event:MouseEvent):void
+        {
+
+            if (dragging)
+            {
+                if (mouseX < original_img.x)
+                    mouse_endx = original_img.x;
+                else if (mouseX > original_img.x + original_img.width)
+                    mouse_endx = original_img.x + original_img.width;
+
+                if (mouseY < original_img.y)
+                    mouse_endy = original_img.y;
+                else if (mouseY > original_img.y + original_img.height)
+                    mouse_endy = original_img.y + original_img.height;
+
+                encuadrarImagen();
+                mouseUp(null);
+
+                dragging = false;
+            }
+        }
+
+        private function encuadrarImagen():void
+        {
+            if (dragging)
+            {
+
+                s.graphics.clear();
+                s.graphics.lineStyle(1, 0xFF0000);
+                s.graphics.beginFill(0xFF0000, 0.2);
+                s.graphics.drawRect(mouse_startx, mouse_starty, (mouse_endx - mouse_startx), (mouse_endy - mouse_starty));
+
+                s.graphics.endFill();
+            }
+        }
+
+        private function closePopup():void
+        {
+            externalImage.parent.dispatchEvent(new Event(Event.CHANGE, true));
+            PopUpManager.removePopUp(this);
+        }
+
+        protected function cancelar_clickHandler(event:MouseEvent):void
+        {
+            closePopup();
+        }
+
+
+        protected function seleccionar_clickHandler(event:MouseEvent):void
+        {
+            searchFile();
+        }
+        ]]>
+    </fx:Script>
+
+
+</s:Panel>

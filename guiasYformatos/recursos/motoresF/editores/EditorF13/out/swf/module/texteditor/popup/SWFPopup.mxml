@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<s:Panel title="Add SWF" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+         keyDown="if(event.keyCode == Keyboard.ESCAPE) onCancel()">
+    <s:layout>
+        <s:VerticalLayout paddingLeft="10" paddingRight="10" verticalAlign="middle"/>
+    </s:layout>
+    <s:Group>
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+        <s:Label id="filename" text="filename"/>
+        <s:Button label="Browse..." click="browseSWF()"/>
+        <s:Button label="Remove SWF" click="removeSWF()"/>
+    </s:Group>
+    <s:Group bottom="0" right="0">
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+        <s:Button label="OK" click="onEnter()"/>
+        <s:Button label="Cancel" click="onCancel()"/>
+    </s:Group>
+    <fx:Script><![CDATA[
+        import flashx.textLayout.edit.EditManager;
+        import flashx.textLayout.edit.IEditManager;
+        import flashx.textLayout.elements.FlowLeafElement;
+        import flashx.textLayout.elements.FlowLeafElement;
+        import flashx.textLayout.elements.InlineGraphicElement;
+        import flashx.textLayout.elements.LinkElement;
+        import flashx.textLayout.elements.ParagraphElement;
+
+        import module.texteditor.helper.EmbededImage;
+
+        import mx.core.FlexGlobals;
+
+        import mx.managers.PopUpManager;
+
+        import spark.components.RichEditableText;
+
+        private var _richEditableText:RichEditableText;
+
+        [Bindable]
+        private var _link:String = "http://";
+        private var fileReference:FileReference;
+
+        private function onEnter():void
+        {
+
+            //IEditManager(_richEditableText.textFlow.interactionManager).applyLink(textInput.text, "_blank");
+
+            PopUpManager.removePopUp(this);
+            _richEditableText.setFocus();
+        }
+
+        private function onCancel():void
+        {
+            PopUpManager.removePopUp(this);
+            _richEditableText.setFocus();
+        }
+
+        private function removeSWF():void
+        {
+            //IEditManager(_richEditableText.textFlow.interactionManager).applyLink("", null);
+            PopUpManager.removePopUp(this);
+            _richEditableText.setFocus();
+        }
+
+        public function set richEditableText(value:RichEditableText):void
+        {
+            _richEditableText = value;
+            var leaf:FlowLeafElement = _richEditableText.textFlow.findLeaf(_richEditableText.textFlow.getAbsoluteStart());
+            var link:LinkElement = leaf.getParentByType(LinkElement) as LinkElement;
+            if (link)
+            {
+                //_link = link.href == "" ? "http://" : link.href;
+            }
+        }
+
+        private function browseSWF():void
+        {
+            fileReference = new FileReference();
+            fileReference.addEventListener(Event.SELECT, onSelect);
+            fileReference.browse([new FileFilter("Images (*.jpg, *.jpeg, *.gif, *.png, *.swf)", "*.jpg;*.jpeg;*.gif;*.png;*.swf")]);
+
+        }
+
+        private function onComplete(event:Event):void
+        {
+            var data:ByteArray = fileReference.data;
+            trace("File loaded");
+            var mLoader = new Loader();
+            mLoader.loadBytes(data);
+            mLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoaderComplete);
+        }
+
+        private function onLoaderComplete(event:Event):void
+        {
+            var clip = LoaderInfo(event.target).loader.content;
+            EditManager(_richEditableText.textFlow.interactionManager).insertInlineGraphic(new EmbededImage(clip), clip.width, clip.height);
+
+        }
+
+        private function onSelect(event:Event):void
+        {
+            fileReference.addEventListener(IOErrorEvent.IO_ERROR, onFileLoadError);
+            fileReference.addEventListener(ProgressEvent.PROGRESS, progressHandler);
+            fileReference.addEventListener(Event.COMPLETE, onComplete);
+            fileReference.load();
+        }
+
+        private function onFileLoadError(event:IOErrorEvent):void
+        {
+            trace("error")
+        }
+
+        private function progressHandler(event:ProgressEvent):void
+        {
+            trace(event.bytesLoaded / event.bytesTotal);
+        }
+        ]]></fx:Script>
+</s:Panel>

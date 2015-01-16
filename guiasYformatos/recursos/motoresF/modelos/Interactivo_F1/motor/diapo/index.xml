@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<diaporama autoplay='false' diapoDefaultTimeOut='5000' effectDefaultTimeOut='1500' textDefaultTimeOut='1000' toolbarAlign='LeftBottom'  toolbarColor='White' toolbarCounter='false' toolbarCounterColor='White'  toolbarMargin='40,40,40,40' fotoMargin='0,0,0,0' textMargin='40,40,40,80'>
+<diapo foto='./recursos/Img01.jpg'>
+<texto type='Verdana' size='48' style='Normal' color='White' align='LeftTop' effectTimeOut='1500'>Diapositiva 1#Texto 1 (LeftTop)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='LeftCenter' effectTimeOut='1500'>Diapositiva 1#Texto 2 (LeftCenter)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='LeftBottom' effectTimeOut='1500'>Diapositiva 1#Texto 3 (LeftBottom)</texto>
+</diapo>
+<diapo foto='./recursos/Img02.jpg'>
+<texto type='Verdana' size='48' style='Normal' color='Black' align='RightTop' effectTimeOut='1500'>Diapositiva 2#Texto 1 (RightTop)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='RightCenter' effectTimeOut='1500'>Diapositiva 2#Texto 2 (RightCenter)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='RightBottom' effectTimeOut='1500'>Diapositiva 2#Texto 3 (RightBottom)</texto>
+</diapo>
+<diapo foto='./recursos/Img03.jpg'>
+<texto type='Verdana' size='48' style='Normal' color='White' align='LeftTop' effectTimeOut='1500'>Diapositiva 3#Texto 1 (LeftTop)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='CenterCenter' effectTimeOut='1500'>Diapositiva 3#Texto 2 (CenterCenter)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='RightBottom' effectTimeOut='1500'>Diapositiva 3#Texto 3 (RightBottom)</texto>
+</diapo>
+<diapo foto='./recursos/Img04.jpg'>
+<texto type='Verdana' size='48' style='Normal' color='White' align='RightTop' effectTimeOut='1500'>Diapositiva 4#Texto 1 (LeftTop)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='CenterCenter' effectTimeOut='1500'>Diapositiva 4#Texto 2 (CenterCenter)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='LeftBottom' effectTimeOut='1500'>Diapositiva 4#Texto 3 (LeftBottom)</texto>
+</diapo>
+<diapo foto='./recursos/Img05.jpg'>
+<texto type='Verdana' size='48' style='Normal' color='White' align='CenterTop' effectTimeOut='1500'>Diapositiva 5#Texto 1 (CenterTop)</texto>
+<texto type='Verdana' size='48' style='Normal' color='Black' align='CenterCenter' effectTimeOut='1500'>Diapositiva 5#Texto 2 (CenterCenter)</texto>
+<texto type='Verdana' size='48' style='Normal' color='White' align='CenterBottom' effectTimeOut='1500'>Diapositiva 5#Texto 3 (CenterBottom)</texto>
+</diapo>
+</diaporama>
+

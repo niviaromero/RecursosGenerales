@@ -1,0 +1,132 @@
+<engine copy="Editorial Planeta" version="1">
+  <main layout="7">
+    <title/>
+    <footer/>
+  </main>
+  <sections>
+    <section i="0" star="false">
+      <submenu>
+        <sections/>
+      </submenu>
+      <pages>
+        <page i="0">
+          <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+          <caption/>
+          <description>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</description>
+          <images>
+            <image path="" border="false">
+              <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+            </image>
+          </images>
+          <questions>
+            <question visible="true">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p clearFloats="none" direction="ltr" justificationRule="auto" justificationStyle="auto" leadingModel="auto" paragraphEndIndent="0" paragraphSpaceAfter="0" paragraphSpaceBefore="0" paragraphStartIndent="0" textAlign="start" textAlignLast="start" textIndent="0" textJustify="interWord" wordSpacing="100%,50%,150%"&gt;&lt;span&gt;dupa &lt;/span&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="italic" fontWeight="normal" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;italic&lt;/span&gt;&lt;span&gt; dupa &lt;/span&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="italic" fontWeight="normal" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;italic&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+            <question visible="false">
+              <text>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</text>
+              <answers>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+                <answer correct="false">&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</answer>
+              </answers>
+            </question>
+          </questions>
+        </page>
+        <page i="0"/>
+        <page i="0"/>
+      </pages>
+      <menuImage>
+        <title>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p clearFloats="none" direction="ltr" justificationRule="auto" justificationStyle="auto" leadingModel="auto" paragraphEndIndent="0" paragraphSpaceAfter="0" paragraphSpaceBefore="0" paragraphStartIndent="0" textAlign="start" textAlignLast="start" textIndent="0" textJustify="interWord" wordSpacing="100%,50%,150%"&gt;&lt;span&gt;dupa &lt;/span&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="italic" fontWeight="normal" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;italic&lt;/span&gt;&lt;span&gt; dupa &lt;/span&gt;&lt;span alignmentBaseline="useDominantBaseline" backgroundAlpha="1" backgroundColor="transparent" baselineShift="0" breakOpportunity="auto" cffHinting="horizontalStem" color="#000000" digitCase="default" digitWidth="default" dominantBaseline="auto" fontFamily="Arial" fontLookup="embeddedCFF" fontSize="12" fontStyle="italic" fontWeight="normal" kerning="auto" ligatureLevel="common" lineHeight="120%" lineThrough="false" locale="en" renderingMode="cff" textAlpha="1" textDecoration="none" textRotation="auto" trackingLeft="0" trackingRight="0" typographicCase="default"&gt;italic&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</title>
+      </menuImage>
+    </section>
+    <section i="1">
+      <submenu>
+        <sections/>
+      </submenu>
+      <pages>
+        <page/>
+        <page/>
+        <page/>
+      </pages>
+    </section>
+  </sections>
+</engine>

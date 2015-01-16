@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+                mouseChildren="false">
+    <s:Label text="{data.name}" fontFamily="{data.font}" fontSize="{data.size}" fontWeight="{data.bold?'bold':'normal'}"
+             textDecoration="{data.underline?'underline':'none'}" fontStyle="{data.italic?'italic':'normal'}"
+             paddingBottom="5" paddingTop="5" paddingLeft="5" paddingRight="5"/>
+</s:ItemRenderer>

@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:texteditor="module.texteditor.*" xmlns:image="module.image.*"
+          creationComplete="load()">
+
+    <s:HGroup verticalAlign="middle">
+        <s:Label text="Título" visible="{showTitle}"/>
+        <s:TextInput id="title" width="250" change="onChange()" visible="{showTitle}"/>
+    </s:HGroup>
+    <s:VGroup id="imageGroup" visible="{list.selectedIndex &lt; 2}" includeInLayout="{list.selectedIndex &lt; 2}">
+        <s:HGroup>
+            <image:ImageModule id="image" uniqueName="{'section'+nr}" change="onChange()" imgw="240" imgh="375" addFullSizeImage="true"/>
+            <s:VGroup>
+                <s:Label text="Pie de foto"/>
+                <texteditor:TextEditorModule boldButtonVisible="false" symbolButtonVisible="false" underlineButtonVisible="false"
+                        listButtonVisible="false" alignIconsVisible="false" swfButtonVisible="false" urlButtonVisible="false"
+                        sectionStylesDropDownVisible="false" colorPickerVisible="false" indexButtonVisible="false"
+                        smallerFontButtonVisible="false" biggerFontButtonVisible="false" height="50"
+                        id="image1Text"/>
+                <s:CheckBox label="zoom" id="zoom1"/>
+            </s:VGroup>
+        </s:HGroup>
+    </s:VGroup>
+    <s:HGroup id="image2Group"  visible="{list.selectedIndex &gt; 2}" includeInLayout="{list.selectedIndex &gt; 2}">
+
+        <s:VGroup>
+            <s:HGroup>
+                <image:ImageModule id="image_2a" uniqueName="{'2a_section'+nr}" change="onChange()" imgw="240" imgh="185" addFullSizeImage="true"/>
+                <s:VGroup>
+                    <s:Label text="Pie de foto"/>
+                    <texteditor:TextEditorModule boldButtonVisible="false" symbolButtonVisible="false" underlineButtonVisible="false"
+                                                 listButtonVisible="false" alignIconsVisible="false" swfButtonVisible="false" urlButtonVisible="false"
+                                                 sectionStylesDropDownVisible="false" colorPickerVisible="false" indexButtonVisible="false"
+                                                 smallerFontButtonVisible="false" biggerFontButtonVisible="false" height="50"
+                                                 id="image2aText"/>
+                    <s:CheckBox label="zoom" id="zoom2a"/>
+                </s:VGroup>
+            </s:HGroup>
+        </s:VGroup>
+        <s:VGroup>
+            <s:HGroup>
+                <image:ImageModule id="image_2b" uniqueName="{'2b_section'+nr}" change="onChange()" imgw="240" imgh="185" addFullSizeImage="true"/>
+                <s:VGroup>
+                    <s:Label text="Pie de foto"/>
+                    <texteditor:TextEditorModule boldButtonVisible="false" symbolButtonVisible="false" underlineButtonVisible="false"
+                                                 listButtonVisible="false" alignIconsVisible="false" swfButtonVisible="false" urlButtonVisible="false"
+                                                 sectionStylesDropDownVisible="false" colorPickerVisible="false" indexButtonVisible="false"
+                                                 smallerFontButtonVisible="false" biggerFontButtonVisible="false" height="50"
+                                                 id="image2bText"/>
+                    <s:CheckBox label="zoom" id="zoom2b"/>
+                </s:VGroup>
+            </s:HGroup>
+        </s:VGroup>
+
+    </s:HGroup>
+
+    <s:List id="list" change="onChange()">
+        <s:layout>
+            <s:HorizontalLayout gap="20"/>
+        </s:layout>
+        <s:itemRenderer>
+            <fx:Component>
+                <s:ItemRenderer>
+                    <s:Image source="{data.image}" width="100" height="85" smooth="true"/>
+                </s:ItemRenderer>
+            </fx:Component>
+        </s:itemRenderer>
+        <s:dataProvider>
+            <s:ArrayCollection>
+                <fx:Object>
+                    <fx:image>
+                        @Embed("/../assets/layout1.jpg")
+                    </fx:image>
+                </fx:Object>
+                <fx:Object>
+                    <fx:image>
+                        @Embed("/../assets/layout2.jpg")
+                    </fx:image>
+                </fx:Object>
+                <fx:Object>
+                    <fx:image>
+                        @Embed("/../assets/layout3.jpg")
+                    </fx:image>
+                </fx:Object>
+                <fx:Object>
+                    <fx:image>
+                        @Embed("/../assets/layout4.jpg")
+                    </fx:image>
+                </fx:Object>
+                <fx:Object>
+                    <fx:image>
+                        @Embed("/../assets/layout5.jpg")
+                    </fx:image>
+                </fx:Object>
+            </s:ArrayCollection>
+        </s:dataProvider>
+    </s:List>
+
+    <texteditor:TextEditorModule id="_editor" change="onChange()" alignIconsVisible="true"/>
+
+    <fx:Script><![CDATA[
+        [Bindable]
+        public var nr:uint;
+
+        [Bindable]
+        public var indicator:String = "";
+
+        [Bindable]
+        public var showTitle:Boolean = true;
+
+
+        public function onChange():void
+        {
+            if(title.text == "" || _editor.exportAsText() == "" || (list.selectedIndex != 2 && !(image.croppedImage.source is Bitmap)))
+            {
+                indicator = " *";
+            }
+            else
+            {
+                indicator = "";
+            }
+        }
+
+        public function load():void
+        {
+            image.showBorder.visible = image.showBorder.includeInLayout = false;
+            image_2a.showBorder.visible = image_2a.showBorder.includeInLayout = false;
+            image_2b.showBorder.visible = image_2b.showBorder.includeInLayout = false;
+
+
+            list.selectedIndex = 0;
+            onChange();
+            var xml:XML = Model.getInstance().xml.children()[nr];
+            if(!xml) return;
+
+            title.text = xml.@title;
+            _editor.importFromTextFlow(xml.toString());
+
+            image.setSource(xml.@path);
+            image_2a.setSource(xml.@path2a);
+            image_2b.setSource(xml.@path2b);
+            image2aText.importFromTextFlow(xml.@image2aText);
+            image2bText.importFromTextFlow(xml.@image2bText);
+            image1Text.importFromTextFlow(xml.@image1Text);
+            zoom1.selected = xml.@zoom1 == "true";
+            zoom2a.selected = xml.@zoom2a == "true";
+            zoom2b.selected = xml.@zoom2b == "true";
+
+            list.selectedIndex = xml.@layout || 0;
+
+        }
+
+        public function save():void
+        {
+            if(!enabled) return;
+
+            var xml:XML = Model.getInstance().xml;//.children()[nr];
+            xml.appendChild(<section></section>);
+            xml = xml.children()[nr];
+            xml.@title = title.text;
+            xml.appendChild(_editor.exportAsTextFlow());
+
+            if (imageGroup.visible)
+            {
+                xml.@path = image.getPath(true);
+                xml.@image1Text = image1Text.exportAsTextFlow();
+            }
+            if (image2Group.visible)
+            {
+                xml.@path2a = image_2a.getPath(true);
+                xml.@image2aText = image2aText.exportAsTextFlow();
+                xml.@path2b = image_2b.getPath(true);
+                xml.@image2bText = image2bText.exportAsTextFlow();
+            }
+
+            xml.@zoom1 = zoom1.selected;
+            xml.@zoom2a = zoom2a.selected;
+            xml.@zoom2b = zoom2b.selected;
+
+            xml.@layout = list.selectedIndex;
+        }
+        ]]></fx:Script>
+</s:VGroup>

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+ <s:Panel title="Añade link URL" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+         keyDown="if(event.keyCode == Keyboard.ESCAPE) onCancel()">
+    <s:layout>
+        <s:VerticalLayout paddingLeft="10" paddingRight="10" verticalAlign="middle"/>
+    </s:layout>
+    <s:Group>
+        <s:layout>
+            <s:HorizontalLayout verticalAlign="middle"/>
+        </s:layout>
+        <s:Label text="Escribe URL"/>
+        <s:TextInput id="textInput"
+                     width="200" text="{_link}" addedToStage="textInput.setFocus(); textInput.selectAll()"
+                     enter="onEnter()"/>
+        <s:Button label="Eliminar" click="removeLink()" id="removeButton"
+                  addedToStage="onRemoveButtonAddedToStage()"/>
+    </s:Group>
+    <s:Group bottom="0" right="0">
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+        <s:Button label="OK" click="onEnter()"/>
+        <s:Button label="Cancel" click="onCancel()"/>
+    </s:Group>
+    <fx:Script><![CDATA[
+        import flashx.textLayout.edit.IEditManager;
+        import flashx.textLayout.edit.ISelectionManager;
+        import flashx.textLayout.elements.FlowLeafElement;
+        import flashx.textLayout.elements.LinkElement;
+        import flashx.textLayout.elements.ParagraphElement;
+
+        import mx.managers.PopUpManager;
+
+        import spark.components.RichEditableText;
+
+        private var _richEditableText:RichEditableText;
+
+        [Bindable]
+        private var _link:String = "http://";
+
+        private function onEnter():void
+        {
+            if (textInput.text == "")
+            {
+                removeLink();
+            }
+            else
+            {
+                IEditManager(_richEditableText.textFlow.interactionManager).applyLink(textInput.text, "_blank", true);
+            }
+            _richEditableText.textFlow.flowComposer.updateAllControllers();
+            PopUpManager.removePopUp(this);
+            _richEditableText.setFocus();
+        }
+
+        private function onCancel():void
+        {
+            PopUpManager.removePopUp(this);
+            _richEditableText.setFocus();
+        }
+
+        private function removeLink():void
+        {
+            IEditManager(_richEditableText.textFlow.interactionManager).applyLink("", null, true);
+            _richEditableText.textFlow.flowComposer.updateAllControllers();
+            textInput.text = "";
+            PopUpManager.removePopUp(this);
+            _richEditableText.setFocus();
+        }
+
+        public function set richEditableText(value:RichEditableText):void
+        {
+            _richEditableText = value;
+            var link:LinkElement = getLink();
+            if (link)
+            {
+                _link = link.href == "" ? "http://" : link.href;
+            }
+        }
+
+        private function getLink():LinkElement
+        {
+            var editManager:ISelectionManager = _richEditableText.textFlow.interactionManager;
+            var firstElementParagraph:FlowLeafElement = editManager.textFlow.findLeaf(editManager.getSelectionState().absoluteStart);
+            var lastElementParagraph:ParagraphElement = editManager.textFlow.findLeaf(editManager.getSelectionState().absoluteEnd).getParagraph();
+
+
+            var leaf:FlowLeafElement = firstElementParagraph;
+            var link:LinkElement = leaf.getParentByType(LinkElement) as LinkElement;
+            return link;
+        }
+
+        private function onRemoveButtonAddedToStage():void
+        {
+            removeButton.visible = removeButton.includeInLayout = getLink() != null;
+        }
+        ]]></fx:Script>
+</s:Panel>

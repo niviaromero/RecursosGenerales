@@ -1,0 +1,103 @@
+<engine copy="Editorial Planeta" version="1">
+  <main mode="f10" title="">
+    <tf>&lt;TextFlow whiteSpaceCollapse="preserve" version="2.0.0" xmlns="http://ns.adobe.com/textLayout/2008"&gt;&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/TextFlow&gt;</tf>
+    <audio/>
+    <audio2 path=""/>
+    <video/>
+  </main>
+  <understanding visible="false" title="" title2="" buttons="false" investiga="false">
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+  </understanding>
+  <reaserch visible="false" title="" title2="" buttons="false" investiga="false">
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+  </reaserch>
+  <definitions visible="false" title="" title2="">
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+    <definition>
+      <title></title>
+      <def/>
+    </definition>
+  </definitions>
+  <activity title2="" visible="false"/>
+</engine>

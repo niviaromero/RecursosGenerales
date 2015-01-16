@@ -1,0 +1,40 @@
+APECT RATIO DE LAS IMG USADAS EN LOS EDITORES
+
+F6b: 250x376*
+
+F6 / F7*:
+horizontal:
+2: 400x250
+3: 277x182
+4: 277x182
+5: 277x182
+6: 277x182
+7: 218x143
+8: 218x143
+vertical :
+2: 298x332
+3: 277x321
+4: 197x182
+5: 197x182
+6: 197x182
+7: 197x182
+8: 197x182
+Img interior: 250x376*
+
+F10 / F11 / F12:
+La imagen del audio: 497x373
+
+F13:
+214x375
+
+F13 1-8 pestañas
+Medidas con imágenes: 565x375px
+Medidas sin imágenes 825x375px
+
+
+Medida del espacio central con imágenes: 565x375px 
+Medida del espacio central sinimágenes 825x375px 
+
+
+*También está la del preview a 800x460, lo mejor es subirlas a medida y trabajar con el encuadrador.
+
