@@ -1,6 +1,8 @@
 
 *.db
 
+~$*.*
+
 guiasYformatos/recursos/motoresM/formatos/~$ercicio_Generico M101AP.docx
 
 guiasYformatos/recursos/motoresM/formatos/~$ercicio_Generico M101.docx
@@ -72,3 +74,7 @@ guiasYformatos/recursos/motoresM/formatos/~$ercicio_Generico M8A.docx
 guiasYformatos/recursos/motoresM/formatos/~$ercicio_Generico M9B.docx
 
 guiasYformatos/recursos/motoresM/formatos/~$ercicio_Generico M9C.docx
+
+guiasYformatos/guion/ejemplos/~$EsqueletoGuion_GE_S1_999_MX.xlsx
+
+guiasYformatos/recursos/~$listadoRecursosAulaPlaneta.xlsx
